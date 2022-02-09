@@ -25,12 +25,16 @@ export class Trial extends Entity {
     type: 'date',
     required: true,
   })
+  // disable eslint here because the data we have is formatted like this
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   start_date: string;
 
   @property({
     type: 'date',
     required: true,
   })
+  // disable eslint here because the data we have is formatted like this
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   end_date: string;
 
   @property({
@@ -49,12 +53,16 @@ export class Trial extends Entity {
     type: 'string',
     required: true,
   })
+  // disable eslint here because the data we have is formatted like this
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   study_type: string;
 
   @property({
     type: 'string',
     required: true,
   })
+  // disable eslint here because the data we have is formatted like this
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   primary_purpose: string;
 
 

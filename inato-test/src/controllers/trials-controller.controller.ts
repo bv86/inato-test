@@ -1,22 +1,15 @@
 import {
   Count,
-  CountSchema,
-  Filter,
-  FilterExcludingWhere,
+  CountSchema, FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
+import {TrialFilter} from '../interfaces';
 import {Trial} from '../models';
 import {TrialRepository} from '../repositories';
 
@@ -71,8 +64,26 @@ export class TrialsControllerController {
     },
   })
   async find(
-    @param.filter(Trial) filter?: Filter<Trial>,
+    @param.filter(Trial) filter?: TrialFilter,
+    @param.query.boolean('ongoing') ongoing?: boolean,
   ): Promise<Trial[]> {
+    if (ongoing !== undefined) {
+      const now = new Date();
+      filter = filter ?? {}
+      if (ongoing) {
+        filter.where = Object.assign(filter.where ?? {}, {
+          start_date: {lte: now.toISOString()},
+          end_date: {gte: now.toISOString()}
+        });
+      } else {
+        filter.where = Object.assign(filter.where ?? {}, {
+          or: [
+            {start_date: {gt: now.toISOString()}},
+            {end_date: {lt: now.toISOString()}}
+          ]
+        });
+      }
+    }
     return this.trialRepository.find(filter);
   }
 
