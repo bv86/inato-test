@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "Trial": 2
+  },
+  "models": {
+    "Trial": {
+      "1": "{\"name\":\"string\",\"country\":\"string\",\"start_date\":\"2022-02-09T18:15:00.232Z\",\"end_date\":\"2022-02-09T18:15:00.232Z\",\"sponsor\":\"string\",\"canceled\":true,\"study_type\":\"string\",\"primary_purpose\":\"string\",\"id\":1}"
+    }
+  }
+}
