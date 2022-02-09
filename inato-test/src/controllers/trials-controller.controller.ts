@@ -1,13 +1,20 @@
 import {
   Count,
-  CountSchema, FilterExcludingWhere,
+  CountSchema,
+  FilterExcludingWhere,
   repository,
-  Where
+  Where,
 } from '@loopback/repository';
 import {
-  del, get,
-  getModelSchemaRef, param, patch, post, put, requestBody,
-  response
+  del,
+  get,
+  getModelSchemaRef,
+  param,
+  patch,
+  post,
+  put,
+  requestBody,
+  response,
 } from '@loopback/rest';
 import {TrialFilter} from '../interfaces';
 import {Trial} from '../models';
@@ -16,7 +23,7 @@ import {TrialRepository} from '../repositories';
 export class TrialsControllerController {
   constructor(
     @repository(TrialRepository)
-    public trialRepository : TrialRepository,
+    public trialRepository: TrialRepository,
   ) {}
 
   @post('/trials')
@@ -45,9 +52,7 @@ export class TrialsControllerController {
     description: 'Trial model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Trial) where?: Where<Trial>,
-  ): Promise<Count> {
+  async count(@param.where(Trial) where?: Where<Trial>): Promise<Count> {
     return this.trialRepository.count(where);
   }
 
@@ -69,18 +74,18 @@ export class TrialsControllerController {
   ): Promise<Trial[]> {
     if (ongoing !== undefined) {
       const now = new Date();
-      filter = filter ?? {}
+      filter = filter ?? {};
       if (ongoing) {
         filter.where = Object.assign(filter.where ?? {}, {
           start_date: {lte: now.toISOString()},
-          end_date: {gte: now.toISOString()}
+          end_date: {gte: now.toISOString()},
         });
       } else {
         filter.where = Object.assign(filter.where ?? {}, {
           or: [
             {start_date: {gt: now.toISOString()}},
-            {end_date: {lt: now.toISOString()}}
-          ]
+            {end_date: {lt: now.toISOString()}},
+          ],
         });
       }
     }
@@ -117,7 +122,8 @@ export class TrialsControllerController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Trial, {exclude: 'where'}) filter?: FilterExcludingWhere<Trial>
+    @param.filter(Trial, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Trial>,
   ): Promise<Trial> {
     return this.trialRepository.findById(id, filter);
   }

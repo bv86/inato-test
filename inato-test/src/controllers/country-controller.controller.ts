@@ -23,7 +23,7 @@ import {CountryRepository} from '../repositories';
 export class CountryControllerController {
   constructor(
     @repository(CountryRepository)
-    public countryRepository : CountryRepository,
+    public countryRepository: CountryRepository,
   ) {}
 
   @post('/countries')
@@ -52,9 +52,7 @@ export class CountryControllerController {
     description: 'Country model count',
     content: {'application/json': {schema: CountSchema}},
   })
-  async count(
-    @param.where(Country) where?: Where<Country>,
-  ): Promise<Count> {
+  async count(@param.where(Country) where?: Where<Country>): Promise<Count> {
     return this.countryRepository.count(where);
   }
 
@@ -106,7 +104,8 @@ export class CountryControllerController {
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Country, {exclude: 'where'}) filter?: FilterExcludingWhere<Country>
+    @param.filter(Country, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Country>,
   ): Promise<Country> {
     return this.countryRepository.findById(id, filter);
   }

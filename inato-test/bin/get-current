@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+// This is our main async function for the CLI
+require('../dist/get-current');

@@ -8,9 +8,7 @@ export class TrialRepository extends DefaultCrudRepository<
   typeof Trial.prototype.id,
   TrialRelations
 > {
-  constructor(
-    @inject('datasources.memory') dataSource: MemoryDataSource,
-  ) {
+  constructor(@inject('datasources.memory') dataSource: MemoryDataSource) {
     super(Trial, dataSource);
   }
 }

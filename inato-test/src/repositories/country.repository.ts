@@ -8,9 +8,7 @@ export class CountryRepository extends DefaultCrudRepository<
   typeof Country.prototype.id,
   CountryRelations
 > {
-  constructor(
-    @inject('datasources.memory') dataSource: MemoryDataSource,
-  ) {
+  constructor(@inject('datasources.memory') dataSource: MemoryDataSource) {
     super(Country, dataSource);
   }
 }

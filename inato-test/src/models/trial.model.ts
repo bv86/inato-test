@@ -26,7 +26,6 @@ export class Trial extends Entity {
     required: true,
   })
   // disable eslint here because the data we have is formatted like this
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   start_date: string;
 
   @property({
@@ -34,7 +33,6 @@ export class Trial extends Entity {
     required: true,
   })
   // disable eslint here because the data we have is formatted like this
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   end_date: string;
 
   @property({
@@ -54,7 +52,6 @@ export class Trial extends Entity {
     required: true,
   })
   // disable eslint here because the data we have is formatted like this
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   study_type: string;
 
   @property({
@@ -62,9 +59,7 @@ export class Trial extends Entity {
     required: true,
   })
   // disable eslint here because the data we have is formatted like this
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   primary_purpose: string;
-
 
   constructor(data?: Partial<Trial>) {
     super(data);
