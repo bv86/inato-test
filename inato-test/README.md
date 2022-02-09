@@ -1,8 +1,15 @@
 # inato-test
 
 This is my implementation of the requested test.
-This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
-[initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
+
+I chose to use [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
+[initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html) as a base for the implementation.
+
+I used the in memory database, with no persistance enabled. When the application boots, I load the provided json files and insert them in the database using regular CRUD operations.
+
+Regarding the CLI, I went for a simple nodejs program that does 2 fetch requests on the API.
+
+See below for instructions on how to use the project.
 
 ## Test specific notes
 
@@ -25,7 +32,6 @@ Then issue command:
 
     yarn build
     ./bin/get-current FR
-
 
 ## Install dependencies
 
